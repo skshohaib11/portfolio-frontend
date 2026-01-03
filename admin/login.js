@@ -21,14 +21,14 @@ async function login() {
       return;
     }
 
-    // ✅ Save token
+    // Save token
     localStorage.setItem("token", data.token);
 
-    // ✅ Redirect
+    // Redirect
     window.location.href = "dashboard.html";
 
   } catch (err) {
     console.error(err);
-    error.textContent = "Server not running";
+    error.textContent = "Server not reachable";
   }
 }
