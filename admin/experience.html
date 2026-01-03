@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Experience Management</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+<header class="admin-header">
+  <div class="container">
+    <h1>Experience Management</h1>
+    <a href="dashboard.html">Back</a>
+  </div>
+</header>
+
+<div class="admin-container">
+
+  <!-- ADD EXPERIENCE -->
+  <div class="admin-card">
+    <h2>Add Experience</h2>
+
+    <label>Company Name</label>
+    <input id="exp-company" placeholder="e.g. Harvey Norman" />
+
+    <label>Designation</label>
+    <input id="exp-designation" placeholder="e.g. General Operative" />
+
+    <label>From</label>
+    <input id="exp-from" type="date" />
+
+    <label>To</label>
+    <input id="exp-to" type="date" />
+
+    <label>Company Logo Path (.jpeg, .jpg, .png)</label>
+    <input type="file" id="exp-logo" accept=".png,.jpg,.jpeg" />
+
+    <label>Responsibilities (one per line)</label>
+    <textarea
+      id="exp-responsibilities"
+      placeholder="Handled warehouse operations&#10;Inventory tracking&#10;Process optimisation"
+    ></textarea>
+
+    <button onclick="addExperience()">Add Experience</button>
+  </div>
+
+  <!-- EXISTING EXPERIENCE -->
+  <div class="admin-card">
+    <h2>Existing Experience</h2>
+    <div id="experience-list"></div>
+  </div>
+
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>

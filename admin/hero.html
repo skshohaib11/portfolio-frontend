@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Manage Hero Section</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <!-- ADMIN NAVIGATION (SAME AS OTHER PAGES) -->
+  <header class="admin-header">
+    <div class="container">
+      <h1>Hero Section</h1>
+      <a href="dashboard.html">Back</a>
+    </div>
+  </header>
+
+  <!-- PAGE CONTENT -->
+  <div class="admin-container">
+    <div class="admin-card">
+
+      <h2>Hero Section</h2>
+
+      <label>Your Name</label>
+      <input type="text" id="hero-name" placeholder="Your Name" />
+
+      <label>Your Title</label>
+      <input type="text" id="hero-title" placeholder="Your Title" />
+
+      <label>Tagline</label>
+      <textarea id="hero-tagline" placeholder="Tagline"></textarea>
+
+      <button onclick="updateHero()">Save Hero Section</button>
+
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

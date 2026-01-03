@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Shohaib Shaikh | Data Analyst</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <meta name="description" content="Shohaib Shaikh – Data Analyst Portfolio showcasing skills, projects, and experience." />
+  <meta name="author" content="Shohaib Shaikh" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body id="home">
+
+<!-- ================= NAVBAR ================= -->
+<header id="navbar">
+  <div class="nav-container">
+    <div class="logo">Portfolio <span>| Data Analyst</span> </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="projects.html">Projects</a>
+      <a href="experience.html">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <!-- ================= IMAGE SECTION ================= -->
+  </div>
+</header>
+
+<section class="image-hero">
+  <img src="assets/images/coverpic.gif" alt="Hero visual" />
+  <div class="image-quote">
+    “No one has ever eaten a better meal than that which he earned with his own hands.”
+    <span class="quote-author">— Sahih al-Bukhari</span>
+  </div>
+</section>
+
+<!-- ================= Horizon Divider Animation  ================= -->
+<div class="horizon-divider"></div>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <h1 id="site-hero-name"></h1>
+  <h2 id="site-hero-title"></h2>
+  <p id="site-hero-tagline"></p>
+  <div class="scroll-arrow">↓</div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills" class="section">
+  <h3>Skills & <span>Expertise</span></h3>
+  <p class="subtitle">A comprehensive overview of my technical skills</p>
+
+  <div id="skills-sections"></div>
+
+</section>
+
+
+<!-- ================= EDUCATION ================= -->
+<section id="education" class="section">
+  <h3>Educational <span>Background</span></h3>
+  <p class="subtitle">Academic background and qualifications</p>
+
+  <div id="education-container" class="experience-timeline">
+    <!-- Education items will be rendered here dynamically -->
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="section">
+  <h3>Get In <span>Touch</span></h3>
+  <p class="subtitle">Let’s collaborate on your next data project</p>
+
+  <div class="contact-grid">
+    <!-- LEFT GRID -->
+    <div class="card contact-info">
+      <h4>Contact Information</h4>
+
+      <div class="contact-actions">
+
+        <a href="https://www.linkedin.com/in/shaikh-mohammed-shohaib-043317251/"
+           target="_blank"
+           class="contact-action linkedin">
+          <span class="contact-text">LinkedIn</span>
+        </a>
+
+        <a href="https://wa.me/353899451394"
+           target="_blank"
+           class="contact-action whatsapp">
+          <span class="contact-text">WhatsApp</span>
+        </a>
+
+        <a href="mailto:sm.shohaib11@gmail.com"
+           class="contact-action gmail">
+          <span class="contact-text">Email Me</span>
+        </a>
+
+        <a href="assets/resume/Shohaib_Shaikh_CV.pdf"
+           download
+           class="contact-action resume">
+          <span class="contact-text">Download CV</span>
+        </a>
+
+        <p class="contact-location">📍 Ireland</p>
+
+      </div>
+    </div>
+
+
+    <!-- RIGHT GRID (UPDATED – UI UNCHANGED) -->
+    <form class="card contact-form" id="contact-form">
+
+      <label for="contact-name">Name</label>
+      <input
+        type="text"
+        id="contact-name"
+        placeholder="Your name"
+        required
+      />
+
+      <label for="contact-email">Email</label>
+      <input
+        type="email"
+        id="contact-email"
+        placeholder="your@email.com"
+        required
+      />
+
+      <label for="contact-message">Message</label>
+      <textarea
+        id="contact-message"
+        placeholder="Your message"
+        required
+      ></textarea>
+
+      <button type="submit" id="contact-submit">
+        Send Message
+      </button>
+
+      <!-- Status message (JS will update this) -->
+      <p id="contact-status"></p>
+
+    </form>
+
+  </div>
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  © 2025 Shohaib Shaikh. All rights reserved.
+</footer>
+
+<!-- JS -->
+<script src="assets/js/main.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  emailjs.init("F2p1F7XN4KUrDQXDN");
+</script>
+
+</body>
+</html>

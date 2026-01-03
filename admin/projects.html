@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Projects Management</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+<header class="admin-header">
+  <div class="container">
+    <h1>Projects Management</h1>
+    <a href="dashboard.html">Back</a>
+  </div>
+</header>
+
+<div class="admin-container">
+
+  <!-- ADD PROJECT -->
+  <div class="admin-card">
+    <h2>Add Project</h2>
+
+    <label>Project Title</label>
+    <input id="project-title" placeholder="e.g. Market Overview Dashboard" />
+
+    <label>Tools / Skills Used (comma separated)</label>
+    <input id="project-tools" placeholder="Python, SQL, Power BI" />
+
+    <label>Project Description</label>
+    <textarea id="project-description" placeholder="Describe what the project does..."></textarea>
+
+    <!-- ✅ IMAGE UPLOAD (REPLACED IMAGE PATH) -->
+    <label>Project Image (.jpeg, .jpg, .png)</label>
+    <input 
+      type="file"
+      id="project-image"
+      accept=".png,.jpg,.jpeg"
+    />
+
+    <label>Project Link (optional)</label>
+    <input id="project-link" placeholder="https://example.com" />
+
+    <button onclick="addProject()">Add Project</button>
+  </div>
+
+  <!-- EXISTING PROJECTS -->
+  <div class="admin-card">
+    <h2>Existing Projects</h2>
+    <div id="projects-list"></div>
+  </div>
+
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>
