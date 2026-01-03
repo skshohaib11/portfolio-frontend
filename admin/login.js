@@ -1,4 +1,4 @@
-const API = "http://localhost:3000/api";
+const API_BASE = "https://portfolio-backend-b7en.onrender.com";
 
 async function login() {
   const email = document.getElementById("email").value;
@@ -8,7 +8,7 @@ async function login() {
   error.textContent = "";
 
   try {
-    const res = await fetch(`${API}/login`, {
+    const res = await fetch(`${API_BASE}/api/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password })
@@ -21,12 +21,14 @@ async function login() {
       return;
     }
 
-    // ✅ SAVE TOKEN
+    // ✅ Save token
     localStorage.setItem("token", data.token);
 
-    // ✅ REDIRECT TO DASHBOARD
+    // ✅ Redirect
     window.location.href = "dashboard.html";
+
   } catch (err) {
+    console.error(err);
     error.textContent = "Server not running";
   }
 }
