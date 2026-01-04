@@ -93,7 +93,10 @@ async function loadSkills() {
 
     cat.items.forEach(skill => {
       const row = document.createElement("div");
-      row.textContent = skill;
+      row.innerHTML = `
+        ${skill.name}
+        <button onclick="deleteSkill('${skill.id}')">❌</button>
+      `;
       block.appendChild(row);
     });
 
