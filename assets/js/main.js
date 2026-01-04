@@ -190,6 +190,9 @@ function renderSkills(categories) {
 /* ===========================
    PROJECTS
 =========================== */
+/* ===========================
+   PROJECTS
+=========================== */
 function renderProjects(projects) {
   const container = document.getElementById("projects-container");
   if (!container) return;
@@ -206,13 +209,29 @@ function renderProjects(projects) {
     card.className = "project-card";
 
     card.innerHTML = `
+      ${
+        project.image
+          ? `
+        <div class="project-image">
+          <img
+            src="${SERVER_BASE}${project.image}"
+            alt="${project.title}"
+            onerror="this.onerror=null; this.style.display='none';"
+          />
+        </div>
+        `
+          : ""
+      }
+
       <h3>${project.title || "Untitled Project"}</h3>
       <p>${project.description || ""}</p>
+
       ${
         project.tools
           ? `<p><strong>Tools:</strong> ${project.tools}</p>`
           : ""
       }
+
       ${
         project.link
           ? `<a href="${project.link}" target="_blank">View Project</a>`
