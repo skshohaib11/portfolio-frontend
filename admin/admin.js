@@ -260,8 +260,8 @@ async function loadExperience() {
 async function addExperience() {
   const company = document.getElementById("exp-company").value.trim();
   const designation = document.getElementById("exp-designation").value.trim();
-  const from_date = document.getElementById("exp-from").value;
-  const to_date = document.getElementById("exp-to").value;
+  const from = document.getElementById("exp-from").value;
+  const to = document.getElementById("exp-to").value;
   const responsibilitiesRaw =
     document.getElementById("exp-responsibilities").value;
   const logoFile = document.getElementById("exp-logo").files[0];
@@ -274,8 +274,8 @@ async function addExperience() {
   const formData = new FormData();
   formData.append("company", company);
   formData.append("designation", designation);
-  formData.append("from_date", from_date);
-  formData.append("to_date", to_date);
+  formData.append("from", from);      // ✅ THIS WAS MISSING
+  formData.append("to", to);          // ✅ THIS WAS MISSING
   formData.append("responsibilities", responsibilitiesRaw);
 
   if (logoFile) {
@@ -298,6 +298,15 @@ async function addExperience() {
   }
 
   alert("Experience added successfully");
+
+  // reset form
+  document.getElementById("exp-company").value = "";
+  document.getElementById("exp-designation").value = "";
+  document.getElementById("exp-from").value = "";
+  document.getElementById("exp-to").value = "";
+  document.getElementById("exp-responsibilities").value = "";
+  document.getElementById("exp-logo").value = "";
+
   loadExperience();
 }
 
