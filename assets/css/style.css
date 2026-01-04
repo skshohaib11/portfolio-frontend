@@ -258,106 +258,84 @@ nav a:hover::after {
 
 
 /* ===============================
-   PROJECT IMAGE FIX (STABLE)
-=============================== */
-/* ===============================
-   PROJECT CARDS — FINAL STABLE VERSION
+   FINAL PROJECT CARD FIX
 =============================== */
 
 /* Grid */
 #projects-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  margin-top: 20px;
+  gap: 28px;
+  margin-top: 30px;
 }
 
 /* Card */
 .project-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
+  max-width: 100%;
+  padding: 18px 20px;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(10px);
-  cursor: pointer;
-
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Card hover (ONLY card moves, image stays intact) */
 .project-card:hover {
-  transform: translateY(-8px);
-  box-shadow:
-    0 22px 45px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(79, 172, 254, 0.25);
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
 }
 
-/* ✅ IMAGE — FULL FIT, NO CROP, NO ZOOM */
+/* Image */
 .project-card img.project-image {
   width: 100%;
-  height: 260px;              /* stable card height */
-  object-fit: contain;        /* FULL IMAGE ALWAYS */
-  background: #0f2027;        /* clean background */
+  height: 240px;              /* ✅ NORMAL CARD HEIGHT */
+  object-fit: contain;        /* ✅ FULL IMAGE, NO CROP */
+  background: #0f2027;
   border-radius: 12px;
-  padding: 12px;
-  margin-bottom: 16px;
-
-  /* IMPORTANT: lock image behavior */
-  transform: none !important;
-  transition: none !important;
+  padding: 10px;
+  margin-bottom: 14px;
 }
 
-/* Text */
+/* Title — LEFT aligned */
 .project-card h3,
 .project-card h4 {
-  margin-top: 6px;
+  text-align: left;
+  font-size: 18px;
+  margin: 6px 0;
 }
 
+/* Description */
 .project-card p {
   font-size: 14px;
   color: #d0d7da;
   margin-top: 6px;
 }
 
+/* Tools */
 .project-card .tools {
-  margin-top: 10px;
-  font-size: 0.9rem;
+  margin-top: 8px;
+  font-size: 13px;
   color: #9fd3c7;
 }
 
-/* CTA */
+/* View Project link — NO underline */
 .project-card a {
-  margin-top: 14px;
+  margin-top: 12px;
   color: #00e5ff;
-  text-decoration: none;
   font-weight: 500;
+  text-decoration: none;     /* ✅ underline removed */
 }
 
-.project-card:hover a {
-  text-decoration: underline;
+.project-card a:hover {
+  opacity: 0.85;
 }
 
-/* Subtle glow overlay */
-.project-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 16px;
-  background: linear-gradient(
-    135deg,
-    rgba(79, 172, 254, 0.12),
-    rgba(0, 242, 254, 0.06),
-    transparent 60%
-  );
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s ease;
-}
-
-.project-card:hover::after {
-  opacity: 1;
+/* Mobile */
+@media (max-width: 768px) {
+  #projects-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 
