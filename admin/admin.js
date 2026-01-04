@@ -51,30 +51,13 @@ async function apiRequest(url, method, body = null) {
    SKILLS MANAGEMENT
 ================================ */
 async function addSkill() {
-  const rawCategory = document.getElementById("skill-category").value;
+  const category_id = document.getElementById("skill-category").value;
   const name = document.getElementById("skill-name").value.trim();
 
-  if (!name) {
-    alert("Enter skill");
-    return;
-  }
-
-  // 🔑 Fetch CMS to map category title → UUID
-  const cms = await fetchCMS();
-
-  const category = cms.skillCategories.find(
-    c => c.title === rawCategory
-  );
-
-  if (!category) {
-    alert("Skill category not found in database");
-    return;
-  }
-
-  const category_id = category.id;
+  if (!name) return alert("Enter skill");
 
   await apiRequest(`${API_BASE}/skills`, "POST", {
-    category_id,
+    category_id, // ✅ UUID
     name
   });
 
@@ -83,8 +66,22 @@ async function addSkill() {
 }
 
 
+
 async function loadSkills() {
   const cms = await fetchCMS();
+
+  // populate dropdown correctly
+  const select = document.getElementById("skill-category");
+  select.innerHTML = "";
+
+  cms.skillCategories.forEach(cat => {
+    const opt = document.createElement("option");
+    opt.value = cat.id;      // ✅ UUID
+    opt.textContent = cat.title;
+    select.appendChild(opt);
+  });
+
+  // existing skills list
   const container = document.getElementById("skills-list");
   if (!container) return;
 
@@ -94,18 +91,16 @@ async function loadSkills() {
     const block = document.createElement("div");
     block.innerHTML = `<strong>${cat.title}</strong>`;
 
-    cat.items.forEach((item, i) => {
+    cat.items.forEach(skill => {
       const row = document.createElement("div");
-      row.innerHTML = `
-        ${item}
-        <button onclick="deleteSkill('${cat.id}', ${i})">❌</button>
-      `;
+      row.textContent = skill;
       block.appendChild(row);
     });
 
     container.appendChild(block);
   });
 }
+
 
 async function deleteSkill(skillId) {
   await apiRequest(`${API_BASE}/skills/${skillId}`, "DELETE");
