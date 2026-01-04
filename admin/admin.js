@@ -51,13 +51,27 @@ async function apiRequest(url, method, body = null) {
    SKILLS MANAGEMENT
 ================================ */
 async function addSkill() {
-  const category_id = document.getElementById("skill-category").value;
+  const categoryTitle = document.getElementById("skill-category").value;
   const name = document.getElementById("skill-name").value.trim();
 
   if (!name) return alert("Enter skill");
 
+  // 1. Get categories from CMS
+  const cms = await fetchCMS();
+
+  // 2. Find category UUID by title
+  const category = cms.skillCategories.find(
+    c => c.title === categoryTitle
+  );
+
+  if (!category) {
+    alert("Skill category not found in database");
+    return;
+  }
+
+  // 3. Send UUID (NOT title)
   await apiRequest(`${API_BASE}/skills`, "POST", {
-    category_id, // ✅ UUID
+    category_id: category.id,
     name
   });
 
@@ -69,19 +83,6 @@ async function addSkill() {
 
 async function loadSkills() {
   const cms = await fetchCMS();
-
-  // populate dropdown correctly
-  const select = document.getElementById("skill-category");
-  select.innerHTML = "";
-
-  cms.skillCategories.forEach(cat => {
-    const opt = document.createElement("option");
-    opt.value = cat.id;      // ✅ UUID
-    opt.textContent = cat.title;
-    select.appendChild(opt);
-  });
-
-  // existing skills list
   const container = document.getElementById("skills-list");
   if (!container) return;
 
@@ -91,7 +92,7 @@ async function loadSkills() {
     const block = document.createElement("div");
     block.innerHTML = `<strong>${cat.title}</strong>`;
 
-    cat.items.forEach(skill => {
+    (cat.items || []).forEach(skill => {
       const row = document.createElement("div");
       row.innerHTML = `
         ${skill.name}
