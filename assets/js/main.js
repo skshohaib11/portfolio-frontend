@@ -266,8 +266,10 @@ function renderExperience(experience) {
         <p><strong>${exp.designation}</strong></p>
 
         <p class="duration">
-          ${formatMonthYear(exp.from)} – ${exp.to ? formatMonthYear(exp.to) : "Present"}
+          ${formatMonthYear(exp.from_date)} – 
+          ${exp.to_date ? formatMonthYear(exp.to_date) : "Present"}
         </p>
+
 
         <ul>
           ${responsibilities.map(r => `<li>${r}</li>`).join("")}

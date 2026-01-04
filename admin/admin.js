@@ -260,8 +260,8 @@ async function loadExperience() {
 async function addExperience() {
   const company = document.getElementById("exp-company").value.trim();
   const designation = document.getElementById("exp-designation").value.trim();
-  const from = document.getElementById("exp-from").value;
-  const to = document.getElementById("exp-to").value;
+  const from_date = document.getElementById("exp-from").value;
+  const to_date = document.getElementById("exp-to").value;
   const responsibilitiesRaw =
     document.getElementById("exp-responsibilities").value;
   const logoFile = document.getElementById("exp-logo").files[0];
@@ -274,16 +274,11 @@ async function addExperience() {
   const formData = new FormData();
   formData.append("company", company);
   formData.append("designation", designation);
-  formData.append("from", from);
-  formData.append("to", to);
+  formData.append("from_date", from_date);
+  formData.append("to_date", to_date);
   formData.append("responsibilities", responsibilitiesRaw);
 
   if (logoFile) {
-    const allowedTypes = ["image/png", "image/jpeg", "image/jpg"];
-    if (!allowedTypes.includes(logoFile.type)) {
-      alert("Only PNG, JPG, and JPEG images are allowed");
-      return;
-    }
     formData.append("logo", logoFile);
   }
 
@@ -291,7 +286,6 @@ async function addExperience() {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token}`
-      // ❌ DO NOT set Content-Type
     },
     body: formData
   });
@@ -313,6 +307,7 @@ async function deleteExperience(id) {
   await apiRequest(`${API_BASE}/experience/${id}`, "DELETE");
   loadExperience();
 }
+
 
 
 
