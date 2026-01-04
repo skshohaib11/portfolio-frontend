@@ -208,6 +208,10 @@ function renderProjects(projects) {
     const card = document.createElement("div");
     card.className = "project-card";
 
+    if (project.link) {
+      card.onclick = () => window.open(project.link, "_blank");
+    }
+    
     card.innerHTML = `
       ${
         project.image

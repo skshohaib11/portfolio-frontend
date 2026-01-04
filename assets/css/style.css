@@ -874,3 +874,64 @@ footer {
   transform: translateY(-6px);
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
 }
+
+
+
+/* =========================================
+   INTERACTIVE PROJECT CARD (SAFE ADDITION)
+========================================= */
+
+.project-card {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Lift + glow */
+.project-card:hover {
+  transform: translateY(-10px) scale(1.01);
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(79, 172, 254, 0.25);
+}
+
+/* Image wrapper control */
+.project-card .project-image {
+  transition: transform 0.45s ease;
+}
+
+/* Image zoom on hover */
+.project-card:hover .project-image {
+  transform: scale(1.06);
+}
+
+/* Gradient hover overlay (subtle) */
+.project-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: linear-gradient(
+    135deg,
+    rgba(79, 172, 254, 0.12),
+    rgba(0, 242, 254, 0.06),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.project-card:hover::after {
+  opacity: 1;
+}
+
+/* CTA emphasis */
+.project-card a {
+  position: relative;
+  z-index: 2;
+}
+
+.project-card:hover a {
+  text-decoration: underline;
+}
