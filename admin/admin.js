@@ -51,33 +51,21 @@ async function apiRequest(url, method, body = null) {
    SKILLS MANAGEMENT
 ================================ */
 async function addSkill() {
-  const categoryTitle = document.getElementById("skill-category").value;
+  const select = document.getElementById("skill-category");
+  const categoryTitle = select.options[select.selectedIndex].text;
   const name = document.getElementById("skill-name").value.trim();
 
   if (!name) return alert("Enter skill");
 
-  // 1. Get categories from CMS
-  const cms = await fetchCMS();
-
-  // 2. Find category UUID by title
-  const category = cms.skillCategories.find(
-    c => c.title === categoryTitle
-  );
-
-  if (!category) {
-    alert("Skill category not found in database");
-    return;
-  }
-
-  // 3. Send UUID (NOT title)
   await apiRequest(`${API_BASE}/skills`, "POST", {
-    category_id: category.id,
+    category_id: categoryTitle, // 🔑 SEND TITLE, NOT UUID
     name
   });
 
   document.getElementById("skill-name").value = "";
   loadSkills();
 }
+
 
 
 
