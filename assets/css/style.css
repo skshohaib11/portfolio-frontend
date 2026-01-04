@@ -255,10 +255,10 @@ nav a:hover::after {
   color: #cfd8dc;
   font-size: 1.1rem;
 }
-
 /* ===============================
-   PROJECTS
+   PROJECT IMAGE FIX (STABLE)
 =============================== */
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -268,16 +268,22 @@ nav a:hover::after {
 
 #projects-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* ✅ always 2 columns */
+  grid-template-columns: repeat(2, 1fr); /* always 2 columns */
   gap: 24px;
   margin-top: 20px;
 }
 
+/* Project card */
 .project-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
   background: rgba(255, 255, 255, 0.06);
   border-radius: 14px;
   padding: 28px;
   backdrop-filter: blur(10px);
+
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -286,11 +292,25 @@ nav a:hover::after {
   box-shadow: 0 20px 40px rgba(0,0,0,0.35);
 }
 
+/* Project image */
+.project-card .project-image {
+  width: 100%;
+  height: 220px;          /* fixed height = no jump */
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+
+/* Text content */
+.project-card h3,
 .project-card h4 {
+  margin-top: 8px;
   margin-bottom: 10px;
 }
 
 .project-card p {
+  margin-top: 6px;
   font-size: 14px;
   color: #d0d7da;
 }
@@ -301,9 +321,10 @@ nav a:hover::after {
   color: #9fd3c7;
 }
 
+/* Button */
 .project-card a {
+  margin-top: auto;       /* pushes button to bottom */
   display: inline-block;
-  margin-top: 14px;
   color: #00e5ff;
   text-decoration: none;
   font-weight: 500;
@@ -311,13 +332,6 @@ nav a:hover::after {
 
 
 
-.project-image {
-  width: 100%;
-  max-height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 14px;
-}
 
 /* =========================================
    IMAGE HERO + PAGE HERO COMBINED FIX
