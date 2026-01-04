@@ -193,8 +193,8 @@ function renderProjects(projects) {
 
   container.innerHTML = "";
 
-  if (!projects.length) {
-    container.innerHTML = `<p class="empty-text">Projects coming soon.</p>`;
+  if (!projects || projects.length === 0) {
+    container.innerHTML = "<p>Projects coming soon.</p>";
     return;
   }
 
@@ -202,21 +202,12 @@ function renderProjects(projects) {
     const card = document.createElement("div");
     card.className = "project-card";
 
-    const imageHTML = project.image
-      ? `<img 
-           src="${SERVER_BASE}${project.image}" 
-           alt="${project.title}" 
-           class="project-image"
-         />`
-      : "";
-
     card.innerHTML = `
-      ${imageHTML}
-      <h4>${project.title}</h4>
-      <p>${project.description}</p>
+      <h3>${project.title || "Untitled Project"}</h3>
+      <p>${project.description || ""}</p>
       ${
-        project.tools && project.tools.length
-          ? `<p class="tools"><strong>Tools:</strong> ${project.tools.join(", ")}</p>`
+        project.tools
+          ? `<p><strong>Tools:</strong> ${project.tools}</p>`
           : ""
       }
       ${

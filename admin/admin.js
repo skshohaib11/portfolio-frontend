@@ -51,19 +51,20 @@ async function apiRequest(url, method, body = null) {
    SKILLS MANAGEMENT
 ================================ */
 async function addSkill() {
-  const category = document.getElementById("skill-category").value;
-  const name = document.getElementById("skill-name").value;
+  const category_id = document.getElementById("skill-category").value;
+  const name = document.getElementById("skill-name").value.trim();
 
   if (!name) return alert("Enter skill");
 
-  await apiRequest(
-    `${API_BASE}/skill-categories/${category}/items`,
-    "POST",
-    { name }
-  );
+  await apiRequest(`${API_BASE}/skills`, "POST", {
+    category_id,
+    name
+  });
 
+  document.getElementById("skill-name").value = "";
   loadSkills();
 }
+
 
 async function loadSkills() {
   const cms = await fetchCMS();
@@ -89,13 +90,11 @@ async function loadSkills() {
   });
 }
 
-async function deleteSkill(categoryId, index) {
-  await apiRequest(
-    `${API_BASE}/skill-categories/${categoryId}/items/${index}`,
-    "DELETE"
-  );
+async function deleteSkill(skillId) {
+  await apiRequest(`${API_BASE}/skills/${skillId}`, "DELETE");
   loadSkills();
 }
+
 
 /* ===============================
    HERO MANAGEMENT
