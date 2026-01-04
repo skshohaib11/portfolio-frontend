@@ -273,23 +273,31 @@ nav a:hover::after {
   margin-top: 20px;
 }
 
-/* Project card */
 .project-card {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-
+  padding: 22px;
+  border-radius: 16px;
   background: rgba(255, 255, 255, 0.06);
-  border-radius: 14px;
-  padding: 28px;
   backdrop-filter: blur(10px);
-
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .project-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+}
+
+/* Image wrapper */
+.project-card img.project-image {
+  width: 100%;
+  height: auto;                 /* ✅ IMPORTANT */
+  max-height: 320px;            /* keeps card balanced */
+  object-fit: contain;          /* ✅ FULL IMAGE, NO CROP */
+  background: #0f2027;          /* clean backdrop */
+  border-radius: 12px;
+  padding: 12px;                /* breathing room */
+  margin-bottom: 16px;
 }
 
 /* Project image */
@@ -302,29 +310,28 @@ nav a:hover::after {
   flex-shrink: 0;
 }
 
-/* Text content */
+/* Text alignment */
 .project-card h3,
 .project-card h4 {
-  margin-top: 8px;
-  margin-bottom: 10px;
+  margin-top: 6px;
 }
 
 .project-card p {
-  margin-top: 6px;
   font-size: 14px;
   color: #d0d7da;
+  margin-top: 6px;
 }
 
+/* Tools line */
 .project-card .tools {
   margin-top: 10px;
   font-size: 0.9rem;
   color: #9fd3c7;
 }
 
-/* Button */
+/* CTA */
 .project-card a {
-  margin-top: auto;       /* pushes button to bottom */
-  display: inline-block;
+  margin-top: 14px;
   color: #00e5ff;
   text-decoration: none;
   font-weight: 500;
