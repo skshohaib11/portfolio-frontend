@@ -175,13 +175,16 @@ function renderSkills(categories) {
     section.innerHTML = `
       <h4>${cat.title}</h4>
       <div class="skill-items">
-        ${cat.items.map(item => `<span class="skill-chip">${item}</span>`).join("")}
+        ${cat.items
+          .map(skill => `<span class="skill-chip">${skill.name}</span>`)
+          .join("")}
       </div>
     `;
 
     container.appendChild(section);
   });
 }
+
 
 
 /* ===========================
