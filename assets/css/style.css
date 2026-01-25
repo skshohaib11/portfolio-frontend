@@ -296,8 +296,8 @@ nav a:hover::after {
 
 /* 🔒 IMAGE LOCK (THIS IS THE KEY FIX) */
 .project-card img.project-image {
-  width: 200px !important;                 /* ✅ FIXED WIDTH */
-  height: 300px !important;                /* ✅ FIXED HEIGHT */
+  width: 200px;                 /* ✅ FIXED WIDTH */
+  height: 300px;                /* ✅ FIXED HEIGHT */
   object-fit: cover;            /* ✅ crops safely */
   border-radius: 14px;
   background: #0f2027;
@@ -338,6 +338,17 @@ nav a:hover::after {
   text-decoration: none;
   font-weight: 500;
 }
+
+/* 🔥 HARD OVERRIDE – PROJECT IMAGE LOCK */
+#projects-container img {
+  width: 200px !important;
+  height: 300px !important;
+  max-width: 200px !important;
+  max-height: 300px !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
 
 /* Mobile: single column */
 @media (max-width: 900px) {
