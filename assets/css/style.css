@@ -293,13 +293,14 @@ nav a:hover::after {
 }
 
 /* 🔒 IMAGE LOCK — THIS IS THE KEY FIX */
+/* Fixed image frame */
 .project-card img {
   width: 100%;
-  height: 300px;              /* 🔥 FIXED HEIGHT */
-  object-fit: cover;          /* 🔥 CROPS IMAGE */
+  height: 300px;                 /* 🔒 FIXED HEIGHT */
+  object-fit: contain;           /* ✅ SHOW FULL IMAGE */
+  background: #0f2027;           /* letterbox background */
   border-radius: 12px;
-  background: #0f2027;
-  margin-bottom: 14px;
+  padding: 10px;                 /* breathing space */
   display: block;
 }
 
