@@ -302,8 +302,8 @@ nav a:hover::after {
 /* Project image */
 .project-card img.project-image {
   width: 100%;
-  height: 200px;                 /* controlled visual height */
-  object-fit: fill;           /* show full image */
+  height: 100px;                 /* controlled visual height */
+  object-fit:cover;           /* show full image */
   display: block;
 
   background: #0f2027;
