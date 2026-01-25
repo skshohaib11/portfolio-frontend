@@ -259,92 +259,86 @@ nav a:hover::after {
 
 
 /* ===============================
-   PROJECTS SECTION – FINAL FIX
+   PROJECTS – FINAL, FIXED & STABLE
 =============================== */
 
-/* Grid container */
+/* Section constraint */
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Grid: 2 columns */
 #projects-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* always 2 columns */
+  grid-template-columns: repeat(2, 1fr);
   gap: 32px;
   margin-top: 40px;
 }
 
-/* Project card */
+/* Card */
 .project-card {
   background: rgba(255, 255, 255, 0.06);
-  border-radius: 18px;
-  overflow: hidden;                 /* 🔑 CLIPS IMAGE TO CARD */
+  border-radius: 16px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover effect */
+/* Hover */
 .project-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
 }
 
-/* ===============================
-   IMAGE CONTAINER (TOP)
-=============================== */
+/* 🔒 IMAGE LOCK — THIS IS THE KEY FIX */
+/* Fixed image frame */
 .project-card img {
   width: 100%;
-  height: 260px;                     /* ✅ UNIFORM IMAGE HEIGHT */
-  object-fit: cover;                /* ✅ FILLS GREY AREA */
+  height: 300px;                 /* 🔒 FIXED HEIGHT */
+  object-fit: cover;           /* ✅ SHOW FULL IMAGE */
+  background: #0f2027;           /* letterbox background */
+  border-radius: 12px;
+  padding: 10px;                 /* breathing space */
   display: block;
 }
 
-/* ===============================
-   CARD CONTENT (BOTTOM)
-=============================== */
+/* Title */
 .project-card h3,
 .project-card h4 {
-  padding: 18px 22px 0;
-  margin: 0;
   text-align: left;
+  margin-top: 6px;
 }
 
+/* Description */
 .project-card p {
-  padding: 10px 22px 0;
   font-size: 14px;
   color: #d0d7da;
-  line-height: 1.6;
+  margin-top: 6px;
 }
 
-/* Tools text */
+/* Tools */
 .project-card .tools {
-  padding: 10px 22px 0;
   font-size: 13px;
   color: #9fd3c7;
+  margin-top: 8px;
 }
 
-/* View Project link */
+/* View Project */
 .project-card a {
-  padding: 14px 22px 22px;
+  margin-top: 14px;
   color: #00e5ff;
   text-decoration: none;
   font-weight: 500;
 }
 
-.project-card a:hover {
-  text-decoration: none;
-}
-
-/* ===============================
-   RESPONSIVE (MOBILE)
-=============================== */
+/* Mobile: 1 column */
 @media (max-width: 900px) {
   #projects-container {
     grid-template-columns: 1fr;
   }
-
-  .project-card img {
-    height: 220px;
-  }
 }
-
 
 
 
