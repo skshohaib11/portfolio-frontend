@@ -259,86 +259,92 @@ nav a:hover::after {
 
 
 /* ===============================
-   PROJECTS – FINAL, FIXED & STABLE
+   PROJECTS SECTION – FINAL FIX
 =============================== */
 
-/* Section constraint */
-.section {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-/* Grid: 2 columns */
+/* Grid container */
 #projects-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr); /* always 2 columns */
   gap: 32px;
   margin-top: 40px;
 }
 
-/* Card */
+/* Project card */
 .project-card {
   background: rgba(255, 255, 255, 0.06);
-  border-radius: 16px;
-  padding: 20px;
+  border-radius: 18px;
+  overflow: hidden;                 /* 🔑 CLIPS IMAGE TO CARD */
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover */
+/* Hover effect */
 .project-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
 }
 
-/* 🔒 IMAGE LOCK — THIS IS THE KEY FIX */
-/* Fixed image frame */
+/* ===============================
+   IMAGE CONTAINER (TOP)
+=============================== */
 .project-card img {
   width: 100%;
-  height: 300px;                 /* 🔒 FIXED HEIGHT */
-  object-fit: contain;           /* ✅ SHOW FULL IMAGE */
-  background: #0f2027;           /* letterbox background */
-  border-radius: 12px;
-  padding: 10px;                 /* breathing space */
+  height: 260px;                     /* ✅ UNIFORM IMAGE HEIGHT */
+  object-fit: cover;                /* ✅ FILLS GREY AREA */
   display: block;
 }
 
-/* Title */
+/* ===============================
+   CARD CONTENT (BOTTOM)
+=============================== */
 .project-card h3,
 .project-card h4 {
+  padding: 18px 22px 0;
+  margin: 0;
   text-align: left;
-  margin-top: 6px;
 }
 
-/* Description */
 .project-card p {
+  padding: 10px 22px 0;
   font-size: 14px;
   color: #d0d7da;
-  margin-top: 6px;
+  line-height: 1.6;
 }
 
-/* Tools */
+/* Tools text */
 .project-card .tools {
+  padding: 10px 22px 0;
   font-size: 13px;
   color: #9fd3c7;
-  margin-top: 8px;
 }
 
-/* View Project */
+/* View Project link */
 .project-card a {
-  margin-top: 14px;
+  padding: 14px 22px 22px;
   color: #00e5ff;
   text-decoration: none;
   font-weight: 500;
 }
 
-/* Mobile: 1 column */
+.project-card a:hover {
+  text-decoration: none;
+}
+
+/* ===============================
+   RESPONSIVE (MOBILE)
+=============================== */
 @media (max-width: 900px) {
   #projects-container {
     grid-template-columns: 1fr;
   }
+
+  .project-card img {
+    height: 220px;
+  }
 }
+
 
 
 
