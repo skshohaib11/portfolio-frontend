@@ -257,16 +257,14 @@ nav a:hover::after {
 }
 
 
-/* ===============================
-   PROJECT CARD – FINAL IMAGE FIX
-=============================== */
+
 /* ===============================
    PROJECT GRID – FINAL FIX
 =============================== */
 
 /* Section container constraint */
 .section {
-  max-width: 1100px;
+  max-width: 200px;
   margin: auto;
 }
 
