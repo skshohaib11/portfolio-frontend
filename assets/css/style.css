@@ -261,22 +261,29 @@ nav a:hover::after {
    PROJECT CARD – FINAL IMAGE FIX
 =============================== */
 /* ===============================
-   PROJECT CARD – FINAL STABLE FIX
+   PROJECT GRID – FINAL FIX
 =============================== */
 
+/* Section container constraint */
+.section {
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* Grid: ALWAYS 2 columns */
 #projects-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* clean 2-column layout */
-  gap: 24px;
-  align-items: start;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-top: 40px;
 }
 
 /* Card */
 .project-card {
-  width: 100%;                      /* ✅ grid controls width */
+  width: 100%;                    /* ✅ fill grid column */
   background: rgba(255,255,255,0.06);
   border-radius: 16px;
-  padding: 20px;
+  padding: 22px;
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -291,15 +298,15 @@ nav a:hover::after {
 /* Image */
 .project-card img.project-image {
   width: 100%;
-  height: 240px;                 /* ✅ NORMAL SIZE */
-  object-fit: contain;           /* ✅ FULL IMAGE, NO CROP */
+  height: 240px;                 /* ✅ NORMAL card image height */
+  object-fit: contain;           /* full image, no crop */
   background: #0f2027;
   border-radius: 12px;
-  padding: 10px;
-  margin-bottom: 14px;
+  padding: 12px;
+  margin-bottom: 16px;
 }
 
-/* Title – LEFT aligned */
+/* Title */
 .project-card h3,
 .project-card h4 {
   text-align: left;
@@ -320,16 +327,19 @@ nav a:hover::after {
   margin-top: 8px;
 }
 
-/* View Project – NO underline */
+/* View Project */
 .project-card a {
-  margin-top: 12px;
+  margin-top: 14px;
   color: #00e5ff;
   text-decoration: none;
   font-weight: 500;
 }
 
-.project-card a:hover {
-  text-decoration: none;
+/* Mobile: 1 column */
+@media (max-width: 900px) {
+  #projects-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 
