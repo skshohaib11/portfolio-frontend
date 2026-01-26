@@ -885,3 +885,34 @@ footer {
 }
 
 
+/* ========================
+   PAGE LOADER
+======================== */
+#page-loader {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #0f2027, #203a43, #0f2027);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.4s ease;
+}
+
+#page-loader.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader-text {
+  font-size: 16px;
+  color: #9adfff;
+  letter-spacing: 0.6px;
+  animation: pulse 1.4s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
+}

@@ -1,3 +1,4 @@
+const CMS_CACHE_KEY = "cms_content_cache_v1";
 const API_BASE = "https://portfolio-backend-b7en.onrender.com";
 const SERVER_BASE = API_BASE;
 const API_URL = `${API_BASE}/api/cms/content`;
@@ -339,23 +340,48 @@ function initSmoothScroll() {
 }
 
 
-
 async function loadCMSContent() {
+  // 1. Render cached data immediately
+  const cached = localStorage.getItem(CMS_CACHE_KEY);
+  if (cached) {
+    try {
+      renderAll(JSON.parse(cached));
+    } catch {}
+  }
+
+  // 2. Fetch fresh data in background
   try {
-    const res = await fetch(`${API_BASE}/api/cms/content`);
-    if (!res.ok) throw new Error("Failed to load CMS content");
+    const res = await fetch(API_URL, { cache: "no-store" });
+    if (!res.ok) throw new Error();
 
     const data = await res.json();
-
-    renderHero(data.hero);
-    renderSkills(data.skillCategories);
-    renderProjects(data.projects);
-    renderExperience(data.experience);
-    renderEducation(data.education);
-
-  } catch (err) {
-    console.error("CMS Load Error:", err);
+    localStorage.setItem(CMS_CACHE_KEY, JSON.stringify(data));
+    renderAll(data);
+  } catch {
+    console.warn("Backend sleeping – using cached content");
   }
+}
+
+
+
+function renderAll(data) {
+  if (!data) return;
+
+  renderHero(data.hero);
+  renderSkills(data.skillCategories || []);
+  renderProjects(data.projects || []);
+  renderExperience(data.experience || []);
+  renderEducation(data.education || []);
+
+  hideLoader();
+}
+
+
+function hideLoader() {
+  const loader = document.getElementById("page-loader");
+  if (!loader) return;
+  loader.classList.add("hidden");
+  setTimeout(() => loader.remove(), 500);
 }
 
 
