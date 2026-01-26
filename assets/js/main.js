@@ -14,6 +14,21 @@ function formatMonthYear(dateStr) {
   });
 }
 
+async function fetchWithTimeout(url, timeout = 6000) {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeout);
+
+  try {
+    const res = await fetch(url, { signal: controller.signal, cache: "no-store" });
+    clearTimeout(id);
+    return res;
+  } catch (err) {
+    clearTimeout(id);
+    throw err;
+  }
+}
+
+
 
 /* ===========================
    HERO
@@ -349,16 +364,16 @@ async function loadCMSContent() {
     } catch {}
   }
 
-  // 2. Fetch fresh data in background
+  // 2. Fetch fresh data with timeout
   try {
-    const res = await fetch(API_URL, { cache: "no-store" });
+    const res = await fetchWithTimeout(API_URL, 6000);
     if (!res.ok) throw new Error();
 
     const data = await res.json();
     localStorage.setItem(CMS_CACHE_KEY, JSON.stringify(data));
     renderAll(data);
   } catch {
-    console.warn("Backend sleeping – using cached content");
+    console.warn("Backend sleeping or slow – using cached content");
   }
 }
 
