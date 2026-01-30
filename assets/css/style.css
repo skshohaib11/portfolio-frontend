@@ -835,13 +835,64 @@ nav a:hover::after {
 
 
 /* ========================
-   FOOTER
+   FOOTER NAV – HIGHLIGHTED
 ======================== */
-footer {
-  text-align: center;
-  padding: 40px 20px;
-  opacity: 0.6;
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+  margin-bottom: 18px;
 }
+
+/* Base footer links */
+.footer-nav a {
+  position: relative;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  padding: 6px 0;
+  transition: color 0.3s ease;
+}
+
+/* Hover color */
+.footer-nav a:hover {
+  color: #4facfe;
+}
+
+/* Active footer link */
+.footer-nav a.active {
+  color: #00e5ff;
+}
+
+/* Gradient underline (same identity as navbar) */
+.footer-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  transition: width 0.3s ease;
+}
+
+/* Hover underline */
+.footer-nav a:hover::after {
+  width: 100%;
+}
+
+/* Active underline always visible */
+.footer-nav a.active::after {
+  width: 100%;
+}
+
+/* Optional soft glow for footer nav */
+.footer-nav a.active {
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.4);
+}
+
 
 /* ========================
    ANIMATIONS
