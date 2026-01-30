@@ -399,6 +399,8 @@ function hideLoader() {
   setTimeout(() => loader.remove(), 500);
 }
 
+document.querySelectorAll('.footer-nav a')
+
 
 /* ===========================
    INIT AFTER DOM LOAD
